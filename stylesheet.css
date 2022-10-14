@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+/* Set up color scheme */
+
+:root {
+    --primary: #ffffff;
+    --secondary: #e5e5e5;
+    --text: #2b2b36;
+    --text-seconday: #666773;
+    --cta: #30ade3;
+}
+
+html, body {
+    min-height: 100vh;
+}
+
+html {
+    background-color: var(--primary);
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    color: var(--text-seconday);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Custom text */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: var(--text);
+    word-break: break-word;
+}
+
+.title {
+    font-size: 3rem;
+}
+
+.subtitle {
+    font-size: 2rem;
+    margin-top: calc(2vh + 20px)
+}
+
+p, a, div, ul, ol {
+    color: var(--text-seconday);
+}
+
+p {
+    line-height: 140%;
+}
+
+.main-title {
+    text-align: center;
+    color: var(--cta)
+}
+
+/* Container object */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: calc(2vh + 10px) 0;
+}
+
+.container * {
+    grid-column: 2 / span 10;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.container section {
+    padding: calc(2vh + 10px) calc(2vw + 20px);
+    margin: calc(2vh + 10px) 0;
+    border-radius: 15px;
+}
+
+.container section:nth-child(even) {
+    background-color: var(--secondary)
+}
+
+/* Create Parallax images and the trapezoid cutouts */
+
+.parallax-window {
+    min-height: 600px;
+    background: transparent;
+    position: relative;
+}
+
+.parallax-window::before, .parallax-window::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100px;
+
+}
+
+.parallax-window::before {
+    top: -1px;
+    background-color: var(--primary);
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 35%);
+}
+
+.parallax-window::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    background-color: var(--primary);
+    clip-path: polygon(0 65%, 100% 50%, 100% 100%, 0 100%);
+}
+
+/* Navigation */
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 20px 0;
+}
+
+nav ul a {
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    border: 2px solid transparent;
+    border-radius: 25px;
+}
+
+nav ul a:hover {
+    color: var(--cta);
+}
+
+.active {
+    border: 2px solid var(--cta) !important;
+    color: var(--cta);
+}
+
+nav ul a li {
+    width: fit-content;
+    padding: 15px 20px;
+}
+
+nav ul a li i {
+    margin-right: 10px;
+}
+
+/* Footer */
+
+footer {
+    margin-top: auto;
+}
+
+footer * {
+    width: fit-content;
+    grid-row: 1;
+}
+
+footer :nth-last-child(1) {
+    grid-column: 10 / span 2;
+    margin: auto 0 auto auto;
+}
+
+/* Blog */
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.card {
+    border: 2px solid var(--secondary);
+    padding: 50px 20px;
+    border-radius: 25px;
+    width: 100%;
+    transition-duration: 300ms;
+}
+
+.list:nth-last-child(1) {
+    flex-grow: 2;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: var(--cta);
+    padding: 8px 15px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition-duration: 300ms;
+    margin-top: 10px;
+    display: inline-block;
+    width: fit-content;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+
+}
+
+.button:hover {
+    border: 2px solid var(--cta);
+}
+
+.button i {
+    margin-left: 10px;
+}
+
+.button.back {
+    margin-left: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.individual-post {
+    background-color: var(--secondary);
+    padding: 40px 15px;
+    border-radius: 15px;
+}
+
+.individual-post title {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.author {
+    color: var(--text-seconday)
+}
+
+.post-date {
+    margin-bottom: 40px;
+}
+
+/* About Us */
+
+.person.card {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+}
+
+.person-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.person-content img {
+    width: 300px;
+    margin-left: -50px;
+    border-right: 2px solid var(--secondary);
+    border-bottom: 0;
+}
+
+.person-content div .email {
+    color: var(--cta);
+}
+
+/* Different Screen sizes */
+
+@media screen and (max-width: 600px) {
+    footer {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        display: block;
+        margin: 0 5px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .person-content {
+        flex-direction: column;
+    }
+
+    .person-content img {
+        width: calc(100% + 60px);
+        border-bottom: 2px solid var(--secondary);
+        border-right: 0;
+    }
+}
